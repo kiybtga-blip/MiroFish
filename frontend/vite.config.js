@@ -1,18 +1,24 @@
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [vue()],
-  server: {
-    port: 3000,
-    open: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5001',
-        changeOrigin: true,
-        secure: false
-      }
-    }
-  }
-})
+      2 import vue from '@vitejs/plugin-vue'
+      3
+      4 // https://vite.dev/config/
+      5 export default defineConfig({
+      6   plugins: [vue()],
+      7   server: {
+      8     host: '0.0.0.0',
+      9     port: 3000,
+     10     open: false,
+     11     allowedHosts: [
+     12       'mirofish-3ori.onrender.com',
+     13       'localhost',
+     14       '127.0.0.1'
+     15     ],
+     16     proxy: {
+     17       '/api': {
+     18         target: 'http://localhost:5001',
+     19         changeOrigin: true,
+     20         secure: false
+     21       }
+     22     }
+     23   }
+     24 })
